@@ -22,8 +22,8 @@ export default function ExpenseForm({ expense }) {
         setError("")
         
         const url = isEditing ? `/api/expenses/${expense.id}` : "/api/expenses";
-        const response = await fetch("/api/expenses", {
-            method: "POST",
+        const response = await fetch(url, {
+            method: isEditing ? "PATCH" : "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title, amount: Number(amount), category, date}), 
         });
